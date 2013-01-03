@@ -26,7 +26,7 @@ Always refer to the [vim-powerline][VimPowDoc] or [powerline][PowDoc]
 documentation if something doesn't work as you expected and to understand how
 Powerline itself works.
 
-You can also find helpful in [this article][CodeJury] by Eugene Ching, which
+You could also find helpful [this article][CodeJury] by Eugene Ching, which
 inspired me.
 
 [VimPowDoc]: https://github.com/Lokaltog/vim-powerline
