@@ -1,14 +1,14 @@
 Consolas for Powerline
 ======================
 
-This is the patched version of the Consolas font for MS Windows. This font is
+This is the patched version of the Consolas font for MS Windows.  This font is
 compatible with
 [vim-powerline](https://github.com/Lokaltog/vim-powerline)
 and
 [powerline](https://github.com/Lokaltog/powerline).
 
 I've manually patched the original font since it's practically impossible to
-use correctly the Powerline fontpatcher with it. I think this is due to a
+use correctly the Powerline fontpatcher with it.  I think this is due to a
 series of reasons (that I won't list here) that aren't directly correlated to
 the script itself.
 
@@ -39,25 +39,32 @@ otherwise here's how you can install it manually:
 
 ### Use the patched font
 
-To use this font, just install it and put the following line in your vimrc file:
+To use this font, just install it and put the following lines in your vimrc file:
 
-    set guifont=Consolas:h11
-
-where `h11` represents the desired font size (11 pt in this example).
+    " Setting the font to Consolas, 11 pt
+    if has("gui_running")
+      if has("gui_gtk2")
+        set guifont=Consolas\ 11
+      else
+        set guifont=Consolas:h11
+      endif
+    endif
+    
+See `:help guifont` and `:help setting-guifont` in Vim.
 
 Please note that to install this font you'll need to **overwrite** the original
-one! Do your backups, if you want, I'm not responsible for the loss of your
-previous version of Consolas! Anyway, in case you do lose it and want it back,
+one!  Do your backups, if you want, I'm not responsible for the loss of your
+previous version of Consolas!  Anyway, in case you do lose it and want it back,
 follow the instructions above to reinstall it.
 
 Why overwrite?
 --------------
 
 I made a version of this font with a different family name ("Powerline
-Consolas") that was giving me lot of headaches and was killing my free time. I
-couldn't end up with working alternative styles (**bold**, *italic* and ***bold
-italic***) when re-generating them from the original ttf files. I decided,
-then, to take advantage of the existing Consolas family. Perhaps this solution
+Consolas") that was giving me lot of headaches and was killing my free time.  I
+couldn't end up with working alternative styles ( **bold**, *italic* and ***bold
+italic*** ) when re-generating them from the original ttf files.  I decided,
+then, to take advantage of the existing Consolas family.  Perhaps this solution
 is less elegant, but at least it works.
 
 Further information and troubleshooting
