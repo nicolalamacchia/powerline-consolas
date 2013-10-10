@@ -39,7 +39,8 @@ otherwise here's how you can install it manually:
 
 ### Use the patched font
 
-To use this font, just install it and put the following lines in your vimrc file:
+To use this font, just download the file `consola.ttf` and install it, then
+put the following lines in your vimrc file:
 
     " Setting the font to Consolas, 11 pt
     if has("gui_running")
@@ -47,6 +48,25 @@ To use this font, just install it and put the following lines in your vimrc file
         set guifont=Consolas\ 11
       else
         set guifont=Consolas:h11
+      endif
+    endif
+    
+If you need fallback fonts, do the following:
+
+    if has('gui_win32')
+      " On Vim 7.4.16 the following line still doesn't work with gui_gtk
+      set guifont=Consolas:h11:cANSI,Inconsolata:h12,Courier New:h11
+    else " not win32
+      let consolas=system('fc-list | grep -c Consolas')
+      let inconsolata=system('fc-list | grep -c Inconsolata')
+      if (consolas > 0)
+        set guifont=Consolas\ 11
+      elseif (inconsolata > 0)
+        set guifont=Inconsolata\ 12
+      else
+        set guifont=DejaVu\ Sans\ Mono\ 10
+        " or simply
+        " set guifont=Monospace\ 10
       endif
     endif
     
@@ -61,11 +81,11 @@ Why overwrite?
 --------------
 
 I made a version of this font with a different family name ("Powerline
-Consolas") that was giving me lot of headaches and was killing my free time.  I
-couldn't end up with working alternative styles ( **bold**, *italic* and ***bold
-italic*** ) when re-generating them from the original ttf files.  I decided,
-then, to take advantage of the existing Consolas family.  Perhaps this solution
-is less elegant, but at least it works.
+Consolas") which was giving me lot of headaches and was killing my free time.
+I couldn't end up with working alternative styles ( **bold**, *italic* and 
+***bold italic*** ) when re-generating them from the original ttf files.  I 
+decided, then, to take advantage of the existing Consolas family.  Perhaps this
+solution is less elegant, but at least it works.
 
 Further information and troubleshooting
 ---------------------------------------
